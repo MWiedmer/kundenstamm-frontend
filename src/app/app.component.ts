@@ -4,7 +4,14 @@ import {Kunde} from './kunde';
 @Component({
   selector: 'app-root', templateUrl: './app.component.html', styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
+constructor(
+    public apiService: ApiService,
+    public router: Router
+  ) {
+
+  }
   title = 'kundenstamm-frontend';
   name = 'default value';
   vorname = 'default vorname';
@@ -17,6 +24,13 @@ export class AppComponent {
     {id: 2, name: 'Foo', vorname: 'Bar', geburtsdatum: '01.01.1970'}];
 
   selectedKunde: Kunde;
+
+    ngOnInit() {
+    this.apiService.getList().subscribe(response => {
+        console.log(response);
+        this.kunden = response;
+      });
+  }
 
   onSelect(kunde: Kunde): void {
     this.selectedKunde = kunde;
