@@ -1,74 +1,54 @@
-<html>
-<h1 class="mat-display-1">Kundenverwaltung</h1>
-<button *ngIf="!showForm" mat-button (click)="enableForm()">Kunde hinzufügen</button>
+<div class="container">
+  <h1 class="mat-display-1">Kundenverwaltung</h1>
+  <button class="btn btn-outline-primary" *ngIf="!showForm" mat-button (click)="enableForm()">Kunde hinzufügen</button>
 
-<form  #myForm="ngForm" *ngIf="newCustomer && showForm" (ngSubmit)="addCustomer(myForm)" novalidate>
-  <mat-card md-theme="default">
-    <mat-card-title>Kunde erstellen</mat-card-title>
-    <mat-card-content>
-      <p><mat-form-field md-theme="default"><input matInput required [(ngModel)]=newCustomer.name placeholder="Name" name="name"/></mat-form-field>
-      <mat-form-field md-theme="default"><input matInput required [(ngModel)]=newCustomer.vorname placeholder="Vorname" name="vorname"/></mat-form-field></p>
-      <p><mat-form-field md-theme="default"><input matInput [(ngModel)]=newCustomer.geburtsdatum name="geburtsdatum" placeholder="Geburtsdatum"/></mat-form-field></p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-fab type="submit" value="submit" [disabled]="!myForm.valid">Hinzufügen</button>
-      <button mat-fab type="submit" value="submit" (click)="clearForm()">Abbrechen</button>
-    </mat-card-actions>
-  </mat-card>
-</form>
-<!--<mat-list role="list">
-  <mat-list-item role="listitem" *ngFor="let kunde of kunden" (click)="onSelect(kunde)">
-    <span class="badge">{{kunde.customerNr}}</span> {{kunde.name}}
-  </mat-list-item>
-</mat-list>-->
+  <form #myForm="ngForm" *ngIf="newCustomer && showForm" (ngSubmit)="addCustomer(myForm)"  class="card"  novalidate>
+    <div class="card-header">Kunde erstellen</div>
+    <div class="row">
+      <div class="col">
+        <input class="form-control" required [(ngModel)]=newCustomer.name placeholder="Name" name="name"/>
+      </div>
+      <div class="col">
+        <input class="form-control" required [(ngModel)]=newCustomer.vorname placeholder="Vorname" name="vorname"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <input class="form-control" [(ngModel)]=newCustomer.geburtsdatum name="geburtsdatum" placeholder="Geburtsdatum"/>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button type="submit" value="submit" class="btn btn-outline-primary" [disabled]="!myForm.valid">Hinzufügen</button>
+      </div>
+      <div class="col">
+        <button type="submit" value="submit" class="btn btn-outline-danger" (click)="clearForm()">Abbrechen</button>
+      </div>
+    </div>
+  </form>
+  <!--<mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let kunde of kunden" (click)="onSelect(kunde)">
+      <span class="badge">{{kunde.customerNr}}</span> {{kunde.name}}
+    </mat-list-item>
+  </mat-list>-->
 
-<table class="table table-striped">
-  <thead>
+  <table class="table table-striped">
+    <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Vorname</th>
       <th scope="col">Geburtsdatum</th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     <tr *ngFor="let kunde of kundenliste">
       <td>{{ kunde.customerNr }}</td>
       <td>{{ kunde.name }}</td>
       <td>{{ kunde.vorname }}</td>
       <td>{{ kunde.geburtsdatum }}</td>
     </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<table mat-table [dataSource]="kundenliste" class="mat-elevation-z8" width="100%">
-  <!-- Position Column -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> ID</th>
-    <td mat-cell *matCellDef="let kunde"> {{kunde.customerNr}} </td>
-  </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name</th>
-    <td mat-cell *matCellDef="let kunde"> {{kunde.name}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="vorname">
-    <th mat-header-cell *matHeaderCellDef> Vorname</th>
-    <td mat-cell *matCellDef="let kunde"> {{kunde.vorname}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="geburtsdatum">
-    <th mat-header-cell *matHeaderCellDef> Geburtsdatum</th>
-    <td mat-cell *matCellDef="let kunde"> {{kunde.geburtsdatum}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></tr>
-</table>
-
-<app-kunden-detail></app-kunden-detail>
-</html>
+  <!--<app-kunden-detail></app-kunden-detail>-->
+</div>
