@@ -3,7 +3,7 @@ import {Kunde} from './kunde';
 import {Router} from '@angular/router';
 import {KundenstammApiService} from './kundenstamm-api.service';
 import {NgForm} from '@angular/forms';
-
+import {NgbDate} from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
@@ -20,13 +20,12 @@ export class AppComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'vorname', 'geburtsdatum'];
 
-  kunden: Kunde[] = [{customerNr: 1, name: 'Wiedmer', vorname: 'Markus', geburtsdatum: '04.07.1977'},
-    {customerNr: 2, name: 'Foo', vorname: 'Bar', geburtsdatum: '01.01.1970'}];
-
   kundenliste: Kunde[];
 
   selectedKunde: Kunde;
   newCustomer: Kunde = new Kunde();
+  newCustomerGeburtstag: NgbDate;
+
 
   ngOnInit() {
     this.loadCustomers();
@@ -52,6 +51,7 @@ export class AppComponent implements OnInit {
   addCustomer(myForm: NgForm) {
     console.log('form submitted');
     if (myForm.valid) {
+      console.log(this.newCustomer);
       this.kundenstammApiService.createItem(this.newCustomer).subscribe((response) => {
         this.loadCustomers();
         this.showForm = false;

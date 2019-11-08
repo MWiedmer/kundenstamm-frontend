@@ -2,7 +2,7 @@
   <h1 class="mat-display-1">Kundenverwaltung</h1>
   <button class="btn btn-outline-primary" *ngIf="!showForm" mat-button (click)="enableForm()">Kunde hinzufügen</button>
 
-  <form #myForm="ngForm" *ngIf="newCustomer && showForm" (ngSubmit)="addCustomer(myForm)"  class="card"  novalidate>
+  <form #myForm="ngForm" *ngIf="newCustomer && showForm" (ngSubmit)="addCustomer(myForm)" class="card border border-primary shadow p-3 mb-5 bg-white rounded" novalidate>
     <div class="card-header">Kunde erstellen</div>
     <div class="row">
       <div class="col">
@@ -12,8 +12,12 @@
         <input class="form-control" required [(ngModel)]=newCustomer.vorname placeholder="Vorname" name="vorname"/>
       </div>
     </div>
-    <div class="form-group">
-      <input class="form-control" [(ngModel)]=newCustomer.geburtsdatum name="geburtsdatum" placeholder="Geburtsdatum"/>
+    <div class="input-group">
+      <input class="form-control" placeholder="yyyy-mm-dd"
+             name="dp" [(ngModel)]="newCustomerGeburtstag " ngbDatepicker #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+      </div>
     </div>
     <div class="row">
       <div class="col">
@@ -44,7 +48,7 @@
       <td>{{ kunde.customerNr }}</td>
       <td>{{ kunde.name }}</td>
       <td>{{ kunde.vorname }}</td>
-      <td>{{ kunde.geburtsdatum }}</td>
+      <td>{{ kunde.geburtsdatum | date: 'dd.MM.yyyy' }}</td>
     </tr>
     </tbody>
   </table>
