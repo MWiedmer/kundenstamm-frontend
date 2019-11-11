@@ -32,6 +32,8 @@ export class KundenlisteComponent implements OnInit {
 
   ngOnInit() {
     this.loadCustomers();
+this.selectedKunde = new Kunde();
+this.selectedKunde.customerNr = 1;
   }
 
   loadCustomers() {

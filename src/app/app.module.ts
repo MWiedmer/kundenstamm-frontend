@@ -12,16 +12,12 @@ import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import { KundenlisteComponent } from './kundenliste/kundenliste.component';
 
 const appRoutes: Routes = [
-    { path: 'detail', component: KundenDetailComponent },
+    { path: 'detail/:id', component: KundenDetailComponent },
     { path: 'list', component: KundenlisteComponent },
     {
       path: 'home',
       component: AppComponent,
       data: { title: 'Kundenverwaltung' }
-    },
-    { path: '',
-      redirectTo: '/home',
-      pathMatch: 'full'
     }
 ];
 

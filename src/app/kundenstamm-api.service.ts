@@ -43,4 +43,12 @@ export class KundenstammApiService {
       .post<Kunde>(this.baseUrl + 'customer', JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+
+// Create a new item
+  getCustomer(id): Observable<Kunde> {
+    console.log("get Customer: " + id);
+    return this.httpClient
+      .get<Kunde>(this.baseUrl + 'customer/' +id, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 }
