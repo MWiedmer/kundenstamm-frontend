@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {KundenstammApiService} from '../kundenstamm-api.service';
+import {Kunde} from '../kunde';
 
 @Component({
   selector: 'app-kunden-detail',
