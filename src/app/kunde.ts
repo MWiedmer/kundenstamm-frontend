@@ -4,5 +4,6 @@ export class Kunde {
   customerNr: number;
   name: string;
   vorname: string;
+  adresse: string;
   geburtsdatum: NgbDate ;
 }

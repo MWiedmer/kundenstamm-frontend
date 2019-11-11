@@ -1,10 +1,29 @@
-<div class="card" style="width: 18rem;">
+<div class="card">
 
-  <div class="card-body" >
-    <h5 class="card-title">Card title</h5>
-    <p *ngIf="selectedKunde" class="card-text">{{ selectedKunde.name }}</p>
-  </div>
+    <div class="card-body" *ngIf="selectedKunde">
+        <h5 class="card-title">Kunde</h5>
+        <p class="card-text">Name: {{ selectedKunde.name }} {{ selectedKunde.vorname}}</p>  
+        <p class="card-text">Adresse: {{ selectedKunde.adresse}}</p>  
+        <p class="card-text">Geburtsdatum: {{ selectedKunde.geburtsdatum | date :'dd.MM.yyyy'}}</p>
+    </div>
+    <div *ngIf="(policies$ | async).length">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Policen-Nr</th>
+                    <th scope="col">Deckung</th>
+                    <th scope="col">Gesellschaft</th>                 
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let police of policies$ | async">
+                    <td>{{ police.id }}</td>
+                    <td>{{ police.policyNr }}</td>
+                    <td>{{ police.coverage }}</td>
+                    <td>{{ police.gesellschaft }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-
-<p></p>
-    
