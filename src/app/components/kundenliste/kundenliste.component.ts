@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Kunde} from '../kunde';
+import {Kunde} from '../../model/kunde';
 import {Router} from '@angular/router';
-import {KundenstammApiService} from '../kundenstamm-api.service';
+import {KundenstammApiService} from '../../services/kundenstamm-api.service';
 import {NgForm} from '@angular/forms';
 import {NgbDate} from "@ng-bootstrap/ng-bootstrap";
 

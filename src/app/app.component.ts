@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
-import {NgbDate} from "@ng-bootstrap/ng-bootstrap";
+import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
