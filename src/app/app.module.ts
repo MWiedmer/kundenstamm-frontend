@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
-import {KundenDetailComponent} from './components/kunden-detail/kunden-detail.component';
+import {KundenDetailComponent} from './components/kundendetail/kunden-detail.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
